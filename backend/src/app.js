@@ -1,8 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const postRoutes = require('./routes/postRoutes');
-const userRoutes = require('./routes/userRoutes');
+const appRoutes = require('./routes/appRoutes');
 const sequelize = require('./config/db');
 
 const app = express();
@@ -10,8 +9,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/posts', postRoutes);
-app.use('/users', userRoutes);
+app.use('/api', appRoutes);
+
 
 sequelize.sync().then(() => {
   console.log('Database connected and models synced');
